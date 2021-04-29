@@ -4,7 +4,7 @@
     <div class="title">
       <div class="titleCenter">集团资产大屏</div>
       <div class="none"></div>
-      <div titleRight class="titleRight">资产总数 过保数 异常数 在线数</div>
+      <div titleRight class="titleRight">资产总数 过保率 异常率 在线率</div>
     </div>
     <!-- 页面标题结束 -->
     <!-- 顶部开始 -->
@@ -46,9 +46,9 @@
         <div class="tip2">资产运行态势</div>
         <div class="tip">
           <div class="tip1">资产总数</div>
-          <div class="tip1">在线数</div>
-          <div class="tip1">过保数</div>
-          <div class="tip1">异常数</div>
+          <div class="tip1">在线率</div>
+          <div class="tip1">过保率</div>
+          <div class="tip1">异常率</div>
         </div>
       </div>
       <!-- line结束 -->
@@ -170,7 +170,7 @@ export default {
       };
       var option = {
         type: "tree",
-        backgroundColor: "#000",
+        // backgroundColor: "#000",
         // grid: {
         //   right: "35%",
         //   left: "35%",
@@ -1588,7 +1588,7 @@ export default {
 }
 .main1 .sutuo {
   flex: 1;
-  background-color: pink;
+  /* background-color: pink; */
   position: relative;
 }
 .main1 .sutuo .tip {
