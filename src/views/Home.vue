@@ -84,19 +84,24 @@ export default {
       var getdata = function getData() {
         let data = {
           name: "集团总部",
-          value: 0,
+          // value: 0,
           children: [],
         };
         for (let i = 1; i <= 5; i++) {
+          var city = ["北京", "福建", "广东", "上海", "台湾"];
+          // var
           let obj = {
-            name: i + "#箱变",
-            value: i,
+            name: city[i - 1],
+            value: city[i],
             children: [],
           };
+
+          // 这三个的value值就是提示框的值
           for (let j = 1; j <= 20; j++) {
             let obj2 = {
-              name: `逆变器-${i}-${j}`,
-              value: 1 + "-" + i + "-" + j,
+              name: `资产类型-${i}-${j}`,
+              // value: 1 + "-" + i + "-" + j,
+              value: +"-" + i + "-" + j,
             };
             if (j % 2 == 1) {
               obj2.children = [];
@@ -182,6 +187,7 @@ export default {
         toolbox: {
           //工具栏
           show: true,
+          // show: false,
           iconStyle: {
             borderColor: "#03ceda",
           },
@@ -198,6 +204,7 @@ export default {
           borderWidth: 0.5,
           textStyle: {
             fontSize: 10,
+            color: "#fff",
           },
         },
         series: [
@@ -343,7 +350,7 @@ export default {
         ],
         series: [
           {
-            name: "语文",
+            name: "1",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -364,7 +371,7 @@ export default {
             itemStyle: { normal: { color: "#f0c725" } },
           },
           {
-            name: "数学",
+            name: "2",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -385,7 +392,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "英语",
+            name: "3",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -406,7 +413,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "物理",
+            name: "4",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -427,7 +434,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "化学",
+            name: "5",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -448,7 +455,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "生物",
+            name: "6",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -469,7 +476,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "政治",
+            name: "7",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -490,7 +497,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "历史",
+            name: "8",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -511,7 +518,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "历史",
+            name: "9",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -532,7 +539,7 @@ export default {
             itemStyle: { normal: { color: "#16f892" } },
           },
           {
-            name: "地理",
+            name: "10",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -1525,8 +1532,9 @@ export default {
         valarr.push(ranval);
         option.series[typeidx].data = [
           {
-            name: "",
-            username: getName(runidx),
+            // name: "",
+            资产总数: "9060",
+            // username: getName(runidx),
             telphone: getTel(),
             address: getAddress(dataidx, typeidx),
             value: valarr,
@@ -1536,8 +1544,8 @@ export default {
           return b.value - a.value;
         });
         myChart.setOption(option, true);
-      }, 5000);
-      myChart.setOption(option);
+      }, 3000);
+      // myChart.setOption(option);
     },
   },
 };
