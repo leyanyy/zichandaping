@@ -298,17 +298,18 @@ export default {
             type: "category",
             boundaryGap: false,
             data: [
-              "41-50",
-              "51-60",
-              "61-70",
-              "71-80",
-              "81-90",
-              "91-100",
-              "101-110",
-              "111-120",
-              "121-130",
-              "131-140",
-              "141-150",
+              "1月",
+              "2月",
+              "3月",
+              "4月",
+              "5月",
+              "6月",
+              "7月",
+              "8月",
+              "9月",
+              "10月",
+              "11月",
+              "12月",
             ],
             axisLine: {
               lineStyle: {
@@ -325,7 +326,7 @@ export default {
         yAxis: [
           {
             type: "value",
-            name: "(人数)",
+            name: "",
             show: true,
             nameTextStyle: {
               color: "#c1cadf",
@@ -540,6 +541,28 @@ export default {
           },
           {
             name: "10",
+            type: "line",
+            smooth: true,
+            symbolSize: 8,
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgba(22,248,146,0.5)",
+                },
+                {
+                  offset: 1,
+                  color: "rgba(22,248,146,0.01)",
+                },
+              ]),
+            },
+            data: [5, 1, 19, 42, 13, 15],
+            barWidth: "30%",
+            itemStyle: { normal: { color: "#16f892" } },
+          },
+          //待定
+          {
+            name: "11",
             type: "line",
             smooth: true,
             symbolSize: 8,
@@ -1266,7 +1289,7 @@ export default {
                 show: true,
                 formatter: function (params) {
                   return (
-                    "{fline|客户：" +
+                    "{|客户：" +
                     params.data.username +
                     "  " +
                     params.data.telphone +
