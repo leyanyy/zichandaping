@@ -4,7 +4,7 @@
     <div class="title">
       <div class="titleCenter">集团资产大屏</div>
       <div class="none"></div>
-      <div titleRight class="titleRight">资产总数 过保率 异常率 在线率</div>
+      <div titleRight class="titleRight">资产总数 过保数 异常数 在线数</div>
     </div>
     <!-- 页面标题结束 -->
     <!-- 顶部开始 -->
@@ -46,9 +46,9 @@
         <div class="tip2">资产运行态势</div>
         <div class="tip">
           <div class="tip1">资产总数</div>
-          <div class="tip1">在线率</div>
-          <div class="tip1">过保率</div>
-          <div class="tip1">异常率</div>
+          <div class="tip1">在线数</div>
+          <div class="tip1">过保数</div>
+          <div class="tip1">异常数</div>
         </div>
       </div>
       <!-- line结束 -->
@@ -570,7 +570,7 @@ export default {
         },
         series: [
           {
-            name: "第一部分",
+            name: "在线率",
             type: "gauge",
             color: ["#f00"],
             min: 0,
@@ -593,7 +593,7 @@ export default {
             tooltip: {
               formatter: function () {
                 if (dataArry.one) {
-                  return "第一部分:" + dataArry.one;
+                  return "在线率:" + dataArry.one;
                 }
               },
             },
@@ -656,12 +656,12 @@ export default {
             data: [
               {
                 value: 5,
-                name: "第一部分",
+                name: "在线率",
               },
             ],
           },
           {
-            name: "第二部分",
+            name: "过保率",
             type: "gauge",
             color: ["#f00"],
             min: 0,
@@ -692,7 +692,7 @@ export default {
             tooltip: {
               formatter: function () {
                 if (dataArry.two) {
-                  return "第二部分:" + dataArry.two;
+                  return "过保率:" + dataArry.two;
                 }
               },
             },
@@ -742,12 +742,12 @@ export default {
             data: [
               {
                 value: 3,
-                name: "第二部分",
+                name: "过保率",
               },
             ],
           },
           {
-            name: "第三部分",
+            name: "异常率",
             type: "gauge",
             color: ["#f00"],
             min: 0,
@@ -786,7 +786,7 @@ export default {
             tooltip: {
               formatter: function () {
                 if (dataArry.three) {
-                  return "第三部分:" + dataArry.three;
+                  return "异常率:" + dataArry.three;
                 }
               },
             },
@@ -828,7 +828,7 @@ export default {
             data: [
               {
                 value: 2,
-                name: "第三部分",
+                name: "异常率",
               },
             ],
           },
