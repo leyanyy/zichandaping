@@ -4,7 +4,7 @@
     <div class="title">
       <div class="titleCenter">集团资产大屏</div>
       <div class="none"></div>
-      <div titleRight class="titleRight">资产总数 过保数 异常数 在线数</div>
+      <div titleRight class="titleRight"></div>
     </div>
     <!-- 页面标题结束 -->
     <!-- 顶部开始 -->
@@ -22,11 +22,12 @@
     <div class="main1">
       <div class="sutuo">
         <!-- 素拓图上的标题开始  -->
+        <!-- 废弃的 -->
         <div class="tip">
-          <div class="tip1">服务器</div>
-          <div class="tip1">网络设备</div>
-          <div class="tip1">安全设备</div>
-          <div class="tip1">动环设备</div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
         </div>
         <!-- 素拓图上的标题结束 -->
         <div id="sutuo"></div>
@@ -44,11 +45,12 @@
       <div class="footerBox line">
         <div id="line"></div>
         <div class="tip2">资产运行态势</div>
+        <!-- 废弃的tip -->
         <div class="tip">
-          <div class="tip1">资产总数</div>
-          <div class="tip1">在线数</div>
-          <div class="tip1">过保数</div>
-          <div class="tip1">异常数</div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
+          <div class="tip1"></div>
         </div>
       </div>
       <!-- line结束 -->
@@ -65,7 +67,7 @@
 
 <script>
 // @ is an alias to /src
-import "../assets/js/china";
+import "../assets/js/china1";
 export default {
   mounted() {
     this.sutuo();
@@ -81,7 +83,7 @@ export default {
       var colors = ["#3CB371", "#3CB371", "#3CB371", "#FFA500", "#DC143C"];
       var getdata = function getData() {
         let data = {
-          name: "场站",
+          name: "集团总部",
           value: 0,
           children: [],
         };
@@ -241,7 +243,7 @@ export default {
       var echarts = require("echarts");
       var myChart = echarts.init(document.getElementById("line"));
       var option1 = {
-        backgroundColor: "#161939",
+        // backgroundColor: "#161939",
         color: ["#f0c725", "#16f892"],
         // title: {
         //   left: "center",
@@ -564,7 +566,7 @@ export default {
         three: 200,
       };
       var option2 = {
-        backgroundColor: "#040042",
+        // backgroundColor: "#040042",
         tooltip: {
           formatter: "{a} <br/>{c} {b}",
         },
@@ -1079,13 +1081,15 @@ export default {
         }
       }
 
-      var option3 = {
+      var option = {
         backgroundColor: "#00013a",
         title: [
           {
             show: true,
-            text: "2019年度销售排行",
-            subtext: "单位：万辆",
+            text: "全国资产排行",
+            // 隐藏掉的单位
+
+            subtext: "",
             subtextStyle: {
               color: "#ffffff",
               lineHeight: 20,
@@ -1175,10 +1179,11 @@ export default {
           map: "china",
           label: {
             show: true,
-            color: "#ffffff",
+            color: "#fff",
+            // backgroundColor: "red",
             emphasis: {
               color: "white",
-              show: false,
+              show: true,
             },
           },
           roam: true, //是否允许缩放
@@ -1218,7 +1223,10 @@ export default {
               shadowBlur: 10,
             },
             emphasis: {
-              areaColor: "rgba(249,157,51, .)",
+              // 区域的颜色
+              // areaColor: "rgba(249,157,51, .)",
+              // 20, 61, 186
+              areaColor: "rgba(20,61,186, .65)",
               borderWidth: 0,
             },
           },
@@ -1236,7 +1244,7 @@ export default {
 			}
 		}],*/
           tooltip: {
-            show: false,
+            show: true,
           },
         },
         series: [
@@ -1528,8 +1536,8 @@ export default {
           return b.value - a.value;
         });
         myChart.setOption(option, true);
-      }, 3000);
-      myChart.setOption(option3);
+      }, 5000);
+      myChart.setOption(option);
     },
   },
 };
@@ -1577,7 +1585,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 34px;
+  font-size: 16px;
 }
 .header .box:nth-child(7) {
   font-size: 15px;
