@@ -15,7 +15,7 @@
       <div class="box">过保属：500</div>
       <div class="box">异常数：100</div>
       <div class="box"></div>
-      <div class="box">2019年度销售排行榜</div>
+      <div class="box"></div>
     </div>
     <!-- 顶部结束 -->
     <!-- 素拓图和标题开始 -->
