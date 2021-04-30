@@ -97,12 +97,57 @@ export default {
           };
 
           // 这三个的value值就是提示框的值
+          var k = 1;
           for (let j = 1; j <= 20; j++) {
-            let obj2 = {
-              name: `资产类型-${i}-${j}`,
-              // value: 1 + "-" + i + "-" + j,
-              value: +"-" + i + "-" + j,
-            };
+            var obj2;
+            if (j <= 5) {
+              obj2 = {
+                //原本的
+                // name: `服务器-${i}-${j}`,
+                name: `服务器-0${k}`,
+                // value: 1 + "-" + i + "-" + j,
+                value: +"-" + i + "-" + j,
+              };
+              k++;
+            } else if (j <= 10) {
+              if (j == 6) {
+                k = 0;
+              }
+              k++;
+              obj2 = {
+                //原本的
+                // name: `服务器-${i}-${j}`,
+                name: `安全设备-0${k}`,
+                // value: 1 + "-" + i + "-" + j,
+                value: +"-" + i + "-" + j,
+              };
+            } else if (j <= 15) {
+              if (j == 11) {
+                k = 0;
+              }
+              k++;
+              obj2 = {
+                //原本的
+                // name: `服务器-${i}-${j}`,
+                name: `网络设备-0${k}`,
+                // value: 1 + "-" + i + "-" + j,
+                value: +"-" + i + "-" + j,
+              };
+            } else {
+              if (j == 16) {
+                k = 0;
+              }
+              k++;
+              obj2 = {
+                //原本的
+                // name: `服务器-${i}-${j}`,
+                name: `动环设备-0${k}`,
+                // value: 1 + "-" + i + "-" + j,
+                value: +"-" + i + "-" + j,
+              };
+            }
+
+            //写分支圆圈调成一个的
             if (j % 2 == 1) {
               obj2.children = [];
               for (let k = 1; k <= 14; k++) {
@@ -262,24 +307,24 @@ export default {
         // },
         tooltip: {
           trigger: "axis",
-          axisPointer: {
-            // 坐标轴指示器，坐标轴触发有效
-            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+          // axisPointer: {
+          //   // 坐标轴指示器，坐标轴触发有效
+          //   type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
+          // },
+          formatter: function () {
+            return (
+              "" +
+              "资产总数：9859" +
+              " <br />" +
+              "在线数：9000" +
+              " <br />" +
+              "过保数：6000" +
+              " <br />" +
+              "异常数：200"
+            );
           },
         },
-        // legend: {
-        //   data: [
-        //     "语文",
-        //     "数学",
-        //     "英语",
-        //     "政治",
-        //     "历史",
-        //     "地理",
-        //     "生物",
-        //     "化学",
-        //     "物理",
-        //   ],
-        // },
+        //legend
         grid: {
           left: "6%",
           right: "4%",
@@ -1112,7 +1157,7 @@ export default {
       }
 
       var option = {
-        backgroundColor: "#00013a",
+        // backgroundColor: "red",
         title: [
           {
             show: true,
@@ -1168,7 +1213,7 @@ export default {
             rich: {
               a: {
                 color: "#fff",
-                backgroundColor: "#f0515e",
+                // backgroundColor: "#f0515e",
                 width: 20,
                 height: 20,
                 align: "center",
@@ -1176,7 +1221,7 @@ export default {
               },
               b: {
                 color: "#fff",
-                backgroundColor: "#24a5cd",
+                // backgroundColor: "#24a5cd",
                 width: 20,
                 height: 20,
                 align: "center",
@@ -1247,7 +1292,7 @@ export default {
                 ],
                 globalCoord: false, // 缺省为 false
               },
-              shadowColor: "rgba(255, 255, 255, 0)",
+              // shadowColor: "rgba(255, 255, 255, 0)",
               shadowOffsetX: -2,
               shadowOffsetY: 2,
               shadowBlur: 10,
@@ -1257,6 +1302,7 @@ export default {
               // areaColor: "rgba(249,157,51, .)",
               // 20, 61, 186
               areaColor: "rgba(20,61,186, .65)",
+              // areaColor: "red",
               borderWidth: 0,
             },
           },
@@ -1286,23 +1332,34 @@ export default {
             symbolSize: 14,
             label: {
               normal: {
+                // ========================
                 show: true,
+                // formatter: ["11225"],
+                // formatter: function (params) {
+                //   return (
+                //     "{|客户：" +
+                //     params.data.username +
+                //     "  " +
+                //     params.data.telphone +
+                //     "}\n{tline|" +
+                //     params.data.address +
+                //     "}"
+                //   );
+                // },
                 formatter: function (params) {
                   return (
-                    "{|客户：" +
-                    params.data.username +
-                    "  " +
-                    params.data.telphone +
-                    "}\n{tline|" +
+                    `\n` +
+                    `   ` +
                     params.data.address +
-                    "}"
+                    `\n   资产总数：9000    \n   在线数：111\n   过保数：111\n   异常数：888 \n`
                   );
                 },
                 position: "top",
                 backgroundColor: "rgba(254,174,33,.8)",
                 padding: [0, 0],
                 borderRadius: 3,
-                lineHeight: 32,
+                lineHeight: 14,
+                // 提示框微文字的颜色
                 color: "#f7fafb",
                 rich: {
                   fline: {
@@ -1316,7 +1373,7 @@ export default {
                 },
               },
               emphasis: {
-                show: true,
+                show: false,
               },
             },
             itemStyle: {
@@ -1331,23 +1388,32 @@ export default {
             symbolSize: 14,
             label: {
               normal: {
+                // ===============================
                 show: true,
+                // formatter: function (params) {
+                //   return (
+                //     "{fline|客户：" +
+                //     params.data.username +
+                //     "  " +
+                //     params.data.telphone +
+                //     "}\n{tline|" +
+                //     params.data.address +
+                //     "}"
+                //   );
+                // },
                 formatter: function (params) {
                   return (
-                    "{fline|客户：" +
-                    params.data.username +
-                    "  " +
-                    params.data.telphone +
-                    "}\n{tline|" +
+                    `\n` +
+                    `   ` +
                     params.data.address +
-                    "}"
+                    `\n   资产总数：9000    \n   在线数：111\n   过保数：111\n   异常数：888 \n`
                   );
                 },
                 position: "top",
                 backgroundColor: "rgba(233,63,66,.9)",
                 padding: [0, 0],
                 borderRadius: 3,
-                lineHeight: 32,
+                lineHeight: 14,
                 color: "#ffffff",
                 rich: {
                   fline: {
@@ -1376,23 +1442,32 @@ export default {
             symbolSize: 14,
             label: {
               normal: {
+                // -----------------------------
                 show: true,
+                // formatter: function (params) {
+                //   return (
+                //     "{fline|客户：" +
+                //     params.data.username +
+                //     "  " +
+                //     params.data.telphone +
+                //     "}\n{tline|" +
+                //     params.data.address +
+                //     "}"
+                //   );
+                // },
                 formatter: function (params) {
                   return (
-                    "{fline|客户：" +
-                    params.data.username +
-                    "  " +
-                    params.data.telphone +
-                    "}\n{tline|" +
+                    `\n` +
+                    `   ` +
                     params.data.address +
-                    "}"
+                    `\n   资产总数：9000    \n   在线数：111\n   过保数：111\n   异常数：888 \n`
                   );
                 },
-                position: "top",
+                position: "left",
                 backgroundColor: "rgba(8,186,236,.9)",
                 padding: [0, 0],
                 borderRadius: 3,
-                lineHeight: 32,
+                lineHeight: 14,
                 color: "#ffffff",
                 rich: {
                   fline: {
@@ -1527,48 +1602,121 @@ export default {
         }
         return name;
       }
+      // function getAddress(num, type) {
+      //   var addstr = "";
+      //   switch (type) {
+      //     case 1:
+      //       addstr = "在" + chinaDatas[num].name + "-保时捷4S店购买车辆";
+      //       break;
+      //     case 2:
+      //       addstr = "在" + chinaDatas[num].name + "-奔驰4S店购买车辆";
+      //       break;
+      //     default:
+      //       addstr = "在" + chinaDatas[num].name + "-法拉利4S店购买车辆";
+      //       break;
+      //   }
+      //   return addstr;
+      // }
       function getAddress(num, type) {
         var addstr = "";
         switch (type) {
           case 1:
-            addstr = "在" + chinaDatas[num].name + "-保时捷4S店购买车辆";
+            addstr = chinaDatas[num].name;
             break;
           case 2:
-            addstr = "在" + chinaDatas[num].name + "-奔驰4S店购买车辆";
+            addstr = chinaDatas[num].name;
             break;
           default:
-            addstr = "在" + chinaDatas[num].name + "-法拉利4S店购买车辆";
+            addstr = chinaDatas[num].name;
             break;
         }
         return addstr;
       }
-      var timer = setInterval(() => {
-        //数据情况重绘，清除formatter移动效果，也可根据自身需求是否需要，删除这两行代码
-        /*option.series[seriesjson[runidx].createType-1].data = [];
-    myChart.setOption(option, true);*/
-        var runidx = Math.floor(Math.random() * 3);
-        var typeidx = Math.floor(Math.random() * 3);
-        var dataidx = Math.floor(Math.random() * 32);
-        var ranval = Math.floor(Math.random() * 10);
-        chinaDatas[dataidx].value = chinaDatas[dataidx].value + ranval;
-        var valarr = geoCoordMap[chinaDatas[dataidx].name];
-        valarr.push(ranval);
-        option.series[typeidx].data = [
-          {
-            // name: "",
-            资产总数: "9060",
-            // username: getName(runidx),
-            telphone: getTel(),
-            address: getAddress(dataidx, typeidx),
-            value: valarr,
-          },
-        ];
-        option.series[4].data = option.series[4].data.sort(function (a, b) {
-          return b.value - a.value;
-        });
-        myChart.setOption(option, true);
-      }, 3000);
+      // var timer = setInterval(() => {
+      //数据情况重绘，清除formatter移动效果，也可根据自身需求是否需要，删除这两行代码
+      // option.series[seriesjson[runidx].createType - 1].data = [];
+      // myChart.setOption(option, true);
+      // 3
+      // var runidx = Math.floor(Math.random() * 1);
+      var runidx = 3;
+      // 3只显示一种类型
+      // var typeidx = Math.floor(Math.random() * 1);
+      var typeidx = 0;
+      //显示的是前三个 下面的这个三
+      // var dataidx = Math.floor(Math.random() * 3);
+      var dataidx = 0;
+      var ranval = Math.floor(Math.random() * 10);
+      //让原本的value值不会变的
+      // chinaDatas[dataidx].value = chinaDatas[dataidx].value + ranval;
+      var valarr = geoCoordMap[chinaDatas[dataidx].name];
+      valarr.push(ranval);
+      option.series[typeidx].data = [
+        {
+          name: "",
+          // 资产总数: "9060",
+          username: getName(runidx),
+          telphone: getTel(),
+          address: getAddress(dataidx, typeidx),
+          value: valarr,
+        },
+      ];
+      option.series[4].data = option.series[4].data.sort(function (a, b) {
+        return b.value - a.value;
+      });
+      // myChart.setOption(option, true);
+      // }, 3000);
       // myChart.setOption(option);
+      // ========
+      var runidx = 3;
+      // 3只显示一种类型
+      var typeidx = 1;
+      //显示的是前三个 下面的这个三
+      // var dataidx = Math.floor(Math.random() * 3);
+      var dataidx = 1;
+      var ranval = Math.floor(Math.random() * 10);
+      //让原本的value值不会变的
+      // chinaDatas[dataidx].value = chinaDatas[dataidx].value + ranval;
+      var valarr = geoCoordMap[chinaDatas[dataidx].name];
+      valarr.push(ranval);
+      option.series[typeidx].data = [
+        {
+          name: "",
+          // 资产总数: "9060",
+          username: getName(runidx),
+          telphone: getTel(),
+          address: getAddress(dataidx, typeidx),
+          value: valarr,
+        },
+      ];
+      option.series[4].data = option.series[4].data.sort(function (a, b) {
+        return b.value - a.value;
+      });
+      //=====================
+      var runidx = 3;
+      // 3只显示一种类型
+      // var typeidx = Math.floor(Math.random() * 1);
+      var typeidx = 2;
+      //显示的是前三个 下面的这个三
+      var dataidx = 2;
+      var ranval = Math.floor(Math.random() * 10);
+      //让原本的value值不会变的
+      // chinaDatas[dataidx].value = chinaDatas[dataidx].value + ranval;
+      var valarr = geoCoordMap[chinaDatas[dataidx].name];
+      valarr.push(ranval);
+      option.series[typeidx].data = [
+        {
+          name: "",
+          // 资产总数: "9060",
+          username: getName(runidx),
+          telphone: getTel(),
+          address: getAddress(dataidx, typeidx),
+          value: valarr,
+        },
+      ];
+      option.series[4].data = option.series[4].data.sort(function (a, b) {
+        return b.value - a.value;
+      });
+      myChart.setOption(option, true);
     },
   },
 };
@@ -1603,6 +1751,7 @@ export default {
   display: flex;
   justify-content: center;
   font-size: 32px;
+  /* color: rgba(14, 101, 247, .1); */
 }
 .header {
   display: flex;
